@@ -9,3 +9,6 @@ Vennise Ho
 
 ### 2024-08-09
 Created planning doc and put down some ideas for what the clothing class and sub-classes will consist of.
+
+### 2024-08-10
+Creating Clothing class file
