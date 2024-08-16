@@ -31,6 +31,13 @@ class Clothing:
         self.weather = weather
         self.temperature = temperature
 
+    def add_subtype(self) -> None:
+        """
+        creates an instance of a subtype
+        :return:
+        """
+
+
 class Top(Clothing):
     """
     Class for tops
@@ -41,6 +48,7 @@ class Top(Clothing):
     """
     subtype: str
     length: str
+
     def __init__(self, clothing_type: str, colours: list[list[str]], occasion: str, weather: str,
                  subtype: str, length: str, temperature: tuple[int] = None, pattern: str = None) -> None:
         super().__init__(clothing_type, colours, occasion, weather, temperature, pattern)
