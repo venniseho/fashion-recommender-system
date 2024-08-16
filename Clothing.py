@@ -39,6 +39,8 @@ class Clothing:
         if self.clothing_type == "Top":
             subtype = input("Type of top: ")
             length = input("Length: ")
+            Top(self.clothing_type, self.colours, self.occasion, self.weather, subtype, length,
+                self.temperature, self.pattern)
 
 
 class Top(Clothing):
