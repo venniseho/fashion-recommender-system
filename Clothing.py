@@ -36,6 +36,9 @@ class Clothing:
         creates an instance of a subtype
         :return:
         """
+        if self.clothing_type == "Top":
+            subtype = input("Type of top: ")
+            length = input("Length: ")
 
 
 class Top(Clothing):
