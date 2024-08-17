@@ -42,6 +42,12 @@ class Clothing:
             Top(self.clothing_type, self.colours, self.occasion, self.weather, subtype, length,
                 self.temperature, self.pattern)
 
+        elif self.clothing_type == "Bottoms":
+            subtype = input("Type of bottoms: ")
+            length = input("Length: ")
+            Top(self.clothing_type, self.colours, self.occasion, self.weather, subtype, length,
+                self.temperature, self.pattern)
+
 
 class Top(Clothing):
     """
