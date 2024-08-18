@@ -45,7 +45,7 @@ class Clothing:
         elif self.clothing_type == "Bottoms":
             subtype = input("Type of bottoms: ")
             length = input("Length: ")
-            Top(self.clothing_type, self.colours, self.occasion, self.weather, subtype, length,
+            Bottoms(self.clothing_type, self.colours, self.occasion, self.weather, subtype, length,
                 self.temperature, self.pattern)
 
 
@@ -56,6 +56,24 @@ class Top(Clothing):
     Instance Attributes:
     - subtype: Type of top. I.e.t-shirt, blouse, button-down, corset
     - length: Length of top. I.e. bralette, crop, regular, long
+    """
+    subtype: str
+    length: str
+
+    def __init__(self, clothing_type: str, colours: list[list[str]], occasion: str, weather: str,
+                 subtype: str, length: str, temperature: tuple[int] = None, pattern: str = None) -> None:
+        super().__init__(clothing_type, colours, occasion, weather, temperature, pattern)
+        self.subtype = subtype
+        self.length = length
+
+
+class Bottoms(Clothing):
+    """
+    Class for tops
+
+    Instance Attributes:
+    - subtype: Type of bottoms. I.e. jeans, trousers, skirt
+    - length: Length of bottoms. I.e. mini, midi, 3/4, maxi
     """
     subtype: str
     length: str
