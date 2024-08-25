@@ -83,23 +83,3 @@ class Bottoms(Clothing):
         super().__init__(clothing_type, colours, occasion, weather, temperature, pattern)
         self.subtype = subtype
         self.length = length
-
-
-class Outerwear(Clothing):
-    """
-    Class for tops
-
-    Instance Attributes:
-    - subtype: Type of outerwear. I.e. jacket, puffer, trench
-    - length: Length of outerwear. I.e. crop, regular, midi, maxi
-    - season: what season the jacket is most meant for. I.e. spring, summer, fall, winter
-    """
-    subtype: str
-    length: str
-
-    def __init__(self, clothing_type: str, colours: list[list[str]], occasion: str, weather: str,
-                 subtype: str, length: str, season: str, temperature: tuple[int] = None, pattern: str = None) -> None:
-        super().__init__(clothing_type, colours, occasion, weather, temperature, pattern)
-        self.subtype = subtype
-        self.length = length
-        self.season = season
