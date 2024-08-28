@@ -10,7 +10,7 @@ conn = mysql.connector.connect(
     host="localhost",               # Replace with your host, usually 'localhost'
     user="Vennise",                 # Replace with your MySQL username
     password="Angelwings4444$",     # Replace with your MySQL password
-    database="yourdatabase"         # Replace with your database name (optional) # problem area, to fix
+    database="yourdatabase"         # Replace with your database name (optional) # redownload mysql?
 )
 
 # Create a cursor object
