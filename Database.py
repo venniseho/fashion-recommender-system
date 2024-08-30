@@ -8,9 +8,9 @@ import mysql.connector
 # Establish a connection to the MySQL server
 conn = mysql.connector.connect(
     host="localhost",               # Replace with your host, usually 'localhost'
-    user="Vennise",                 # Replace with your MySQL username
-    password="Angelwings4444$",     # Replace with your MySQL password
-    database="yourdatabase"         # Replace with your database name (optional) # redownload mysql?
+    user="root",                    # Replace with your MySQL username
+    password="root",                # Replace with your MySQL password
+    database="clothing_database"    # Replace with your database name (optional)
 )
 
 # Create a cursor object
