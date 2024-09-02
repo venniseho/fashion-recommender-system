@@ -1,9 +1,8 @@
 """
 Experimental SQL database.
 Currently experimenting with how SQL works.
-Will eventually act as a "virtual closet" for all clothing objects.
+Will eventually act as a 'virtual closet' for all clothing objects.
 """
-
 """
 Commands to enter into Command Prompt to access the table:
 >>> mysql -u root -p 
@@ -23,7 +22,6 @@ Enter password:
 >>> DROP TABLE Tops;
 # deletes the Tops table
 """
-
 
 import mysql.connector
 
