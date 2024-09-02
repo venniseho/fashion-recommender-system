@@ -1,15 +1,19 @@
 """
 Experimental SQL database.
 Currently experimenting with how SQL works.
-Will eventually act as a "virtual closet" for all clothing objects.
+Will eventually act as a 'virtual closet' for all clothing objects.
 """
-
 """
 Commands to enter into Command Prompt to access the table:
 >>> mysql -u root -p 
 Enter password: 
 
 >>> SHOW DATABASES;
+
+>>> USE your_database_name;
+# enter specific database
+>>> SHOW TABLES;
+# show tables in that database
 
 >>> SELECT * FROM Tops; 
 * is which columns, Tops is the specific table
@@ -24,7 +28,6 @@ Enter password:
 # deletes the Tops table
 """
 
-
 import mysql.connector
 
 # Establish a connection to the MySQL server
@@ -38,7 +41,7 @@ conn = mysql.connector.connect(
 # Create a cursor object
 cursor = conn.cursor()
 
-cursor.execute('''DROP TABLE IF EXISTS Tops''')
+# cursor.execute('''DROP TABLE IF EXISTS Tops''')
 
 # Execute an SQL command (for example, create a table)
 cursor.execute('''CREATE TABLE IF NOT EXISTS Tops (
