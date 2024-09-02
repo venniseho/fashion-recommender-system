@@ -26,6 +26,12 @@ Enter password:
 
 >>> DROP TABLE Tops;
 # deletes the Tops table
+
+>>> DELETE FROM Tops
+# deletes all entries in the table
+
+>>> DELETE FROM Tops WHERE subtype = 'corset/bustier';
+# deletes all entries where subtype == 'corset/bustier'
 """
 
 import mysql.connector
@@ -79,13 +85,13 @@ cursor.execute("INSERT INTO Tops (subtype, colours, pattern, occasion, weather, 
 # Commit the transaction
 conn.commit()
 
-# # Query the database
-# cursor.execute("SELECT * FROM users")
-# rows = cursor.fetchall()
-#
-# # Print the result
-# for row in rows:
-#     print(row)
+# Query the database
+cursor.execute("SELECT * FROM Tops")
+rows = cursor.fetchall()
+
+# Print the result
+for row in rows:
+    print(row)
 
 # Close the cursor and connection
 cursor.close()
