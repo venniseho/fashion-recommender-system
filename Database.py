@@ -50,8 +50,8 @@ cursor.execute("INSERT INTO Tops (subtype, colours, pattern, occasion, weather, 
                "VALUES (%s, %s, %s, %s, %s, %s)", ('corset/bustier', 'white', None, 'casual,party', 'sunny', 20))
 
 # Commit the transaction
-# conn.commit()
-#
+conn.commit()
+
 # # Query the database
 # cursor.execute("SELECT * FROM users")
 # rows = cursor.fetchall()
