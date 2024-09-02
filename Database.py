@@ -26,11 +26,11 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS Tops (
                      colours SET('black', 'white', 'grey', 'beige', 'tan', 'brown', 'blue', 'green', 'turquoise', 
                                   'orange', 'pink', 'red', 'yellow', 'silver', 'gold') NOT NULL, 
                      pattern SET('animal', 'floral', 'checked', 'pinstripe', 'striped'),
-                     occasion SET('beach', 'casual', 'lounge', 'officewear', 'formal', 'semi-formal', 'party'),
+                     occasion SET('beach', 'casual', 'lounge', 'officewear', 'formal', 'semi-formal', 'party') NOT NULL,
                      weather SET('sunny', 'partly cloudy', 'cloudy', 'rainy', 'drizzle', 'thunderstorm', 
-                                  'snowy', 'windy'),
+                                  'snowy', 'windy') NOT NULL,
                      temperature TINYINT NOT NULL, 
-                     feels_like TINYINT NOT NULL
+                     feels_like TINYINT
                  )''')
 
 # create a function that can filter by type of subtype if that makes sense:
@@ -41,10 +41,13 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS Tops (
 
 
 # create computer vision thing that can recognise colour hex codes instead of colours as a dropdown set?
+
 # feels like calculated based on weather + temp
 
 # Insert a new record
 # cursor.execute("INSERT INTO users (name, age) VALUES (%s, %s)", ('Alice', 25))
+cursor.execute("INSERT INTO Tops (subtype, colours, pattern, occasion, weather, temperature) "
+               "VALUES (%s, %s, %s, %s, %s, %s)", ('corset/bustier', 'white', None, 'casual,party', 'sunny', 20))
 
 # Commit the transaction
 # conn.commit()
