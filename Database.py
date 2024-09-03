@@ -79,8 +79,18 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS Tops (
 
 # Insert a new record
 # cursor.execute("INSERT INTO users (name, age) VALUES (%s, %s)", ('Alice', 25))
-cursor.execute("INSERT INTO Tops (subtype, colours, pattern, occasion, weather, temperature) "
-               "VALUES (%s, %s, %s, %s, %s, %s)", ('corset/bustier', 'white', None, 'casual,party', 'sunny', 20))
+
+item = ['corset/bustier', 'white', None, 'casual,party', 'sunny', 20]
+
+# Check if item in table
+cursor.execute(f"SELECT * FROM Tops WHERE subtype = '{item[0]}' AND colours = '{item[1]}' AND pattern = '{item[2]}' "
+               f"AND occasion = '{item[3]}' AND weather = '{item[4]}' AND temperature = '{item[5]}'")
+rows = cursor.fetchall()
+print(rows)
+
+if rows:
+    cursor.execute("INSERT INTO Tops (subtype, colours, pattern, occasion, weather, temperature) "
+                   "VALUES (%s, %s, %s, %s, %s, %s)", item)
 
 # Commit the transaction
 conn.commit()
@@ -92,6 +102,15 @@ rows = cursor.fetchall()
 # Print the result
 for row in rows:
     print(row)
+
+print("----------")
+
+# cursor.execute("SELECT * FROM Tops WHERE subtype = 'corset/bustier' AND colours = 'black'")
+# rows = cursor.fetchall()
+#
+# print(type(rows))
+# for row in rows:
+#     print(row)
 
 # Close the cursor and connection
 cursor.close()
