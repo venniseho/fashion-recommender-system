@@ -83,8 +83,8 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS Tops (
 item = ['corset/bustier', 'white', None, 'casual,party', 'sunny', 20]
 
 # Check if item in table
-cursor.execute(f"SELECT * FROM Tops WHERE subtype = '{item[0]}' AND colours = '{item[1]}' AND pattern = '{item[2]}' "
-               f"AND occasion = '{item[3]}' AND weather = '{item[4]}' AND temperature = '{item[5]}'")
+# use 'is NULL' instead of None
+cursor.execute(f"SELECT * FROM Tops WHERE subtype = '{item[0]}' AND colours = '{item[1]}' AND pattern is NULL")
 rows = cursor.fetchall()
 print(rows)
 
