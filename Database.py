@@ -84,12 +84,12 @@ item = ['corset/bustier', 'white', None, 'casual,party', 'sunny', 20]
 
 # Check if item in table
 # use 'is NULL' instead of None
-cursor.execute(f"SELECT * FROM Tops WHERE subtype = '{item[0]}' AND colours = '{item[1]}' AND pattern is NULL"
+cursor.execute(f"SELECT * FROM Tops WHERE subtype = '{item[0]}' AND colours = '{item[1]}' AND pattern is NULL "
                f"AND occasion ='{item[3]}' AND weather = '{item[4]}' AND temperature = '{item[5]}'")
 rows = cursor.fetchall()
 print(rows)
 
-if rows:
+if not rows:
     cursor.execute("INSERT INTO Tops (subtype, colours, pattern, occasion, weather, temperature) "
                    "VALUES (%s, %s, %s, %s, %s, %s)", item)
 
