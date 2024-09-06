@@ -3,7 +3,7 @@
 The ultimate goal is to design a fashion recommender system that can give me clothing recommendations based on weather and temperature along with other features.
 Currently, I am building the base of this system; the database - how each item of clothing is stored and organized.
 
-## Tech Stack: 
+## Tech Stack
 - Backend: Python
 - Database: SQL (mySQL)
 
