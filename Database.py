@@ -47,7 +47,7 @@ conn = mysql.connector.connect(
 # Create a cursor object
 cursor = conn.cursor()
 
-# cursor.execute('''DROP TABLE IF EXISTS Tops''')
+cursor.execute('''DROP TABLE IF EXISTS Tops''')
 
 # Execute an SQL command (for example, create a table)
 cursor.execute('''CREATE TABLE IF NOT EXISTS Tops (
@@ -87,7 +87,7 @@ item = ['corset/bustier', 'white', None, 'casual,party', 'sunny', 20]
 cursor.execute(f"SELECT * FROM Tops WHERE subtype = '{item[0]}' AND colours = '{item[1]}' AND pattern is NULL "
                f"AND occasion ='{item[3]}' AND weather = '{item[4]}' AND temperature = '{item[5]}'")
 rows = cursor.fetchall()
-print(rows)
+# print(rows)
 
 if not rows:
     cursor.execute("INSERT INTO Tops (subtype, colours, pattern, occasion, weather, temperature) "
@@ -103,8 +103,6 @@ rows = cursor.fetchall()
 # Print the result
 for row in rows:
     print(row)
-
-print("----------")
 
 # cursor.execute("SELECT * FROM Tops WHERE subtype = 'corset/bustier' AND colours = 'black'")
 # rows = cursor.fetchall()
