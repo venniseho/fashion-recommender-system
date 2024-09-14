@@ -26,6 +26,9 @@ Planning doc: https://docs.google.com/document/d/1VSf6Rvl3bIrhMl1ZeDYNR1irCiNFXp
 - Implement Database [in progress]
 
 ## Recommender System
+- likely similar to weighted graph
+- need to figure out how to compute similarity score
+- has to take in feedback
 
 ## UI/UX
 - It would be convenient if I could turn it into an app but that may not be feasible
