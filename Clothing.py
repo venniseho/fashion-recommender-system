@@ -1,6 +1,7 @@
 """
-
+Clothing class and subclasses
 """
+import mysql.connector
 
 class Clothing:
     """
@@ -48,6 +49,20 @@ class Clothing:
             Bottoms(self.clothing_type, self.colours, self.occasion, self.weather, subtype, length,
                 self.temperature, self.pattern)
 
+    # def add_to_database(self):
+    #     # Establish a connection to the MySQL server
+    #     conn = mysql.connector.connect(
+    #         host="localhost",  # Replace with your host, usually 'localhost'
+    #         user="root",  # Replace with your MySQL username
+    #         password="root",  # Replace with your MySQL password
+    #         database="clothing_database"  # Replace with your database name
+    #     )
+    #
+    #     # Create a cursor object
+    #     cursor = conn.cursor()
+    #     cursor.execute(f"SELECT * FROM {self.clothing_type} WHERE subtype = '{item[0]}' AND colours = '{item[1]}' AND pattern is NULL "
+    #                    f"AND occasion ='{item[3]}' AND weather = '{item[4]}' AND temperature = '{item[5]}'")
+
 
 class Top(Clothing):
     """
@@ -65,6 +80,23 @@ class Top(Clothing):
         super().__init__(clothing_type, colours, occasion, weather, temperature, pattern)
         self.subtype = subtype
         self.length = length
+
+    # TODO: fix this function
+    def add_to_database(self):
+        # Establish a connection to the MySQL server
+        conn = mysql.connector.connect(
+            host="localhost",  # Replace with your host, usually 'localhost'
+            user="root",  # Replace with your MySQL username
+            password="root",  # Replace with your MySQL password
+            database="clothing_database"  # Replace with your database name
+        )
+
+        # Create a cursor object
+        cursor = conn.cursor()
+        cursor.execute(
+            f"SELECT * FROM {self.clothing_type} WHERE subtype = '{self.subtype}' AND colours = '{self.colours}' "
+            f"AND pattern is NULL AND occasion ='{self.occasion}' AND weather = '{self.weather}' "
+            f"AND temperature = '{self.temperature}'")
 
 
 class Bottoms(Clothing):
