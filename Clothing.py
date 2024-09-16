@@ -3,6 +3,7 @@ Clothing class and subclasses
 """
 import mysql.connector
 
+# TODO: turn into ADT
 class Clothing:
     """
     Class for clothing
