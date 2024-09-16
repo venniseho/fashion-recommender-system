@@ -1,3 +1,7 @@
+"""
+Creating a database for bottoms and their categories
+"""
+
 import mysql.connector
 
 # Establish a connection to the MySQL server
