@@ -15,17 +15,15 @@ conn = mysql.connector.connect(
 # Create a cursor object
 cursor = conn.cursor()
 
-cursor.execute('''DROP TABLE IF EXISTS Tops''')
+# cursor.execute('''DROP TABLE IF EXISTS Bottoms''')
 
-cursor.execute('''CREATE TABLE IF NOT EXISTS Tops (
+cursor.execute('''CREATE TABLE IF NOT EXISTS Bottoms (
                      id INT AUTO_INCREMENT PRIMARY KEY,
-                     subtype SET('t-shirt', 'blouse', 'corset/bustier', 'bodysuit', 'print', 'cut-out',
-                                 'bandeau', 'crop',
-                                 'off-shoulder', 'low cut', 'collared', 'halter', 
-                                 'short sleeve', 'long sleeve', 'puff sleeve', 'sleeveless') NOT NULL, 
+                     subtype SET('jeans', 'pants', 'shorts', 'skirt', 'cargos') NOT NULL, 
                      colours SET('black', 'white', 'grey', 'beige', 'tan', 'brown', 'blue', 'green', 'turquoise', 
                                   'orange', 'pink', 'red', 'yellow', 'silver', 'gold') NOT NULL, 
                      pattern SET('animal', 'floral', 'checked', 'pinstripe', 'striped'),
+                     material SET('denim', 'linen', 'wool', 'twill', 'leather', 'satin'), 
                      occasion SET('beach', 'casual', 'lounge', 'officewear', 'formal', 'semi-formal', 'party') NOT NULL,
                      weather SET('sunny', 'partly cloudy', 'cloudy', 'rainy', 'drizzle', 'thunderstorm', 
                                   'snowy', 'windy') NOT NULL,
