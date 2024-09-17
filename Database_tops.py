@@ -59,6 +59,7 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS Tops (
                      colours SET('black', 'white', 'grey', 'beige', 'tan', 'brown', 'blue', 'green', 'turquoise', 
                                   'orange', 'pink', 'red', 'yellow', 'silver', 'gold') NOT NULL, 
                      pattern SET('animal', 'floral', 'checked', 'pinstripe', 'striped'),
+                     material SET('denim', 'linen', 'wool', 'twill', 'leather', 'satin', 'mesh', 'athletic'), 
                      occasion SET('beach', 'casual', 'lounge', 'officewear', 'formal', 'semi-formal', 'party') NOT NULL,
                      weather SET('sunny', 'partly cloudy', 'cloudy', 'rainy', 'drizzle', 'thunderstorm', 
                                   'snowy', 'windy') NOT NULL,
