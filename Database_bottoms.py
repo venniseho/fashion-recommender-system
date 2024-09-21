@@ -15,7 +15,7 @@ conn = mysql.connector.connect(
 # Create a cursor object
 cursor = conn.cursor()
 
-# cursor.execute('''DROP TABLE IF EXISTS Bottoms''')
+cursor.execute('''DROP TABLE IF EXISTS Bottoms''')
 
 cursor.execute('''CREATE TABLE IF NOT EXISTS Bottoms (
                      id INT AUTO_INCREMENT PRIMARY KEY,
@@ -37,22 +37,18 @@ item = ['jeans', 'blue', None, 'casual', 'sunny,partly cloudy,cloudy', 17]
 cursor.execute(f"SELECT * FROM Bottoms WHERE subtype = '{item[0]}' AND colours = '{item[1]}' AND pattern is NULL "
                f"AND occasion ='{item[3]}' AND weather = '{item[4]}' AND temperature = '{item[5]}'")
 rows = cursor.fetchall()
-print(rows)
 
 if not rows:
     cursor.execute("INSERT INTO Bottoms (subtype, colours, pattern, occasion, weather, temperature) "
                    "VALUES (%s, %s, %s, %s, %s, %s)", item)
 
-# Commit the transaction
-conn.commit()
-
-# Query the database
 cursor.execute("SELECT * FROM Bottoms")
 rows = cursor.fetchall()
-
-# Print the result
 for row in rows:
     print(row)
+
+# Commit the transaction
+conn.commit()
 
 # Close the cursor and connection
 cursor.close()
