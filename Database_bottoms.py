@@ -19,7 +19,7 @@ cursor = conn.cursor()
 
 cursor.execute('''CREATE TABLE IF NOT EXISTS Bottoms (
                      id INT AUTO_INCREMENT PRIMARY KEY,
-                     subtype SET('jeans', 'pants', 'shorts', 'skirt', 'cargos') NOT NULL, 
+                     subtype SET('jeans', 'pants', 'shorts', 'skirt', 'cargos', 'flare') NOT NULL, 
                      colours SET('black', 'white', 'grey', 'beige', 'tan', 'brown', 'blue', 'green', 'turquoise', 
                                   'orange', 'pink', 'red', 'yellow', 'silver', 'gold') NOT NULL, 
                      pattern SET('animal', 'floral', 'checked', 'pinstripe', 'striped'),
@@ -31,36 +31,28 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS Bottoms (
                      feels_like TINYINT
                  )''')
 
-item = ['corset/bustier', 'white', None, 'casual,party', 'sunny', 20]
+item = ['jeans', 'blue', None, 'casual', 'sunny,partly cloudy,cloudy', 17]
 
 # Check if item in table
-# use 'is NULL' instead of None
-cursor.execute(f"SELECT * FROM Tops WHERE subtype = '{item[0]}' AND colours = '{item[1]}' AND pattern is NULL "
+cursor.execute(f"SELECT * FROM Bottoms WHERE subtype = '{item[0]}' AND colours = '{item[1]}' AND pattern is NULL "
                f"AND occasion ='{item[3]}' AND weather = '{item[4]}' AND temperature = '{item[5]}'")
 rows = cursor.fetchall()
-# print(rows)
+print(rows)
 
 if not rows:
-    cursor.execute("INSERT INTO Tops (subtype, colours, pattern, occasion, weather, temperature) "
+    cursor.execute("INSERT INTO Bottoms (subtype, colours, pattern, occasion, weather, temperature) "
                    "VALUES (%s, %s, %s, %s, %s, %s)", item)
 
 # Commit the transaction
 conn.commit()
 
 # Query the database
-cursor.execute("SELECT * FROM Tops")
+cursor.execute("SELECT * FROM Bottoms")
 rows = cursor.fetchall()
 
 # Print the result
 for row in rows:
     print(row)
-
-# cursor.execute("SELECT * FROM Tops WHERE subtype = 'corset/bustier' AND colours = 'black'")
-# rows = cursor.fetchall()
-#
-# print(type(rows))
-# for row in rows:
-#     print(row)
 
 # Close the cursor and connection
 cursor.close()
