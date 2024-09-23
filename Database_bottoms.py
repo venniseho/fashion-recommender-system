@@ -15,7 +15,7 @@ conn = mysql.connector.connect(
 # Create a cursor object
 cursor = conn.cursor()
 
-cursor.execute('''DROP TABLE IF EXISTS Bottoms''')
+# cursor.execute('''DROP TABLE IF EXISTS Bottoms''')
 
 cursor.execute('''CREATE TABLE IF NOT EXISTS Bottoms (
                      id INT AUTO_INCREMENT PRIMARY KEY,

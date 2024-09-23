@@ -54,7 +54,7 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS Tops (
                      id INT AUTO_INCREMENT PRIMARY KEY,
                      subtype SET('t-shirt', 'blouse', 'corset/bustier', 'bodysuit', 'print', 'cut-out',
                                  'bandeau', 'crop',
-                                 'off-shoulder', 'low cut', 'collared', 'halter', 
+                                 'off-shoulder', 'low cut', 'collared', 'halter', 'turtleneck', 
                                  'short sleeve', 'long sleeve', 'puff sleeve', 'sleeveless') NOT NULL, 
                      colours SET('black', 'white', 'grey', 'beige', 'tan', 'brown', 'blue', 'green', 'turquoise', 
                                   'orange', 'pink', 'red', 'yellow', 'silver', 'gold') NOT NULL, 
@@ -81,18 +81,24 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS Tops (
 # Insert a new record
 # cursor.execute("INSERT INTO users (name, age) VALUES (%s, %s)", ('Alice', 25))
 
-item = ['corset/bustier', 'white', None, 'casual,party', 'sunny', 20]
+item = ['corset/bustier', 'white', None, None, 'casual,party', 'sunny', 20]
+item2 = ['turtleneck,bodysuit,long sleeve', 'white', None, None, 'casual', 'snowy,rainy', 15]
 
-# Check if item in table
+items = [item, item2, item]
+
+# Check if item in table. If no, add. else, don't add.
 # use 'is NULL' instead of None
-cursor.execute(f"SELECT * FROM Tops WHERE subtype = '{item[0]}' AND colours = '{item[1]}' AND pattern is NULL "
-               f"AND occasion ='{item[3]}' AND weather = '{item[4]}' AND temperature = '{item[5]}'")
-rows = cursor.fetchall()
-# print(rows)
 
-if not rows:
-    cursor.execute("INSERT INTO Tops (subtype, colours, pattern, occasion, weather, temperature) "
-                   "VALUES (%s, %s, %s, %s, %s, %s)", item)
+for item in items:
+    cursor.execute(f"SELECT * FROM Tops WHERE subtype = '{item[0]}' AND colours = '{item[1]}' AND pattern is NULL "
+                   f"AND material is NULL AND occasion ='{item[4]}' AND weather = '{item[5]}' "
+                   f"AND temperature = '{item[6]}'")
+
+    row = cursor.fetchall()
+    if not row:
+        cursor.execute("INSERT INTO Tops (subtype, colours, pattern, material, occasion, weather, temperature)"
+                       "VALUES (%s, %s, %s, %s, %s, %s, %s)", item)
+
 
 # Commit the transaction
 conn.commit()
