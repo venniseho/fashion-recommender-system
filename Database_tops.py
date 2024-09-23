@@ -47,7 +47,7 @@ conn = mysql.connector.connect(
 # Create a cursor object
 cursor = conn.cursor()
 
-cursor.execute('''DROP TABLE IF EXISTS Tops''')
+# cursor.execute('''DROP TABLE IF EXISTS Tops''')
 
 # Execute an SQL command (for example, create a table)
 cursor.execute('''CREATE TABLE IF NOT EXISTS Tops (
