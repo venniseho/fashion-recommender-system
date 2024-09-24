@@ -83,7 +83,7 @@ class Top(Clothing):
         self.length = length
 
     # TODO: fix this function
-    def add_to_database(self):
+    def add_to_database(self, item: list[str]) -> None:
         # Establish a connection to the MySQL server
         conn = mysql.connector.connect(
             host="localhost",  # Replace with your host, usually 'localhost'
@@ -94,10 +94,17 @@ class Top(Clothing):
 
         # Create a cursor object
         cursor = conn.cursor()
-        cursor.execute(
-            f"SELECT * FROM {self.clothing_type} WHERE subtype = '{self.subtype}' AND colours = '{self.colours}' "
-            f"AND pattern is NULL AND occasion ='{self.occasion}' AND weather = '{self.weather}' "
-            f"AND temperature = '{self.temperature}'")
+        cursor.execute(f"SELECT * FROM Tops WHERE subtype = '{item[0]}' AND colours = '{item[1]}' AND pattern is NULL "
+                       f"AND material is NULL AND occasion ='{item[4]}' AND weather = '{item[5]}' "
+                       f"AND temperature = '{item[6]}'")
+
+        row = cursor.fetchall()
+        if not row:
+            cursor.execute("INSERT INTO Tops (subtype, colours, pattern, material, occasion, weather, temperature)"
+                           "VALUES (%s, %s, %s, %s, %s, %s, %s)", item)
+
+        cursor.close()
+        conn.close()
 
 
 class Bottoms(Clothing):
