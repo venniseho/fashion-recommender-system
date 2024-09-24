@@ -3,6 +3,7 @@ Clothing class and subclasses
 """
 import mysql.connector
 
+
 # TODO: turn into ADT
 class Clothing:
     """
@@ -48,7 +49,7 @@ class Clothing:
             subtype = input("Type of bottoms: ")
             length = input("Length: ")
             Bottoms(self.clothing_type, self.colours, self.occasion, self.weather, subtype, length,
-                self.temperature, self.pattern)
+                    self.temperature, self.pattern)
 
     # def add_to_database(self):
     #     # Establish a connection to the MySQL server
@@ -84,6 +85,14 @@ class Top(Clothing):
 
     # TODO: fix this function
     def add_to_database(self, item: list[str]) -> None:
+        """
+        Add an instance of an item of clothing to the database.
+
+        # TODO should item just be self? i.e. self.subtype, etc. etc.
+
+        :param item: descriptors of items of clothing [subtype, colours, pattern, material, weather, temperature]
+        :return:
+        """
         # Establish a connection to the MySQL server
         conn = mysql.connector.connect(
             host="localhost",  # Replace with your host, usually 'localhost'
@@ -97,6 +106,8 @@ class Top(Clothing):
         cursor.execute(f"SELECT * FROM Tops WHERE subtype = '{item[0]}' AND colours = '{item[1]}' AND pattern is NULL "
                        f"AND material is NULL AND occasion ='{item[4]}' AND weather = '{item[5]}' "
                        f"AND temperature = '{item[6]}'")
+
+        # TODO somehow need to change None to Null when parsing through list...
 
         row = cursor.fetchall()
         if not row:
