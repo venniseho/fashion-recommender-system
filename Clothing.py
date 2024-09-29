@@ -101,11 +101,15 @@ class Top(Clothing):
             database="clothing_database"  # Replace with your database name
         )
 
+        for i in range(len(item)):
+            if item[i] is None:
+                item[i] = "NULL"
+
         # Create a cursor object
         cursor = conn.cursor()
-        cursor.execute(f"SELECT * FROM Tops WHERE subtype = '{item[0]}' AND colours = '{item[1]}' AND pattern is NULL "
-                       f"AND material is NULL AND occasion ='{item[4]}' AND weather = '{item[5]}' "
-                       f"AND temperature = '{item[6]}'")
+        cursor.execute(f"SELECT * FROM Tops WHERE subtype = '{item[0]}' AND colours = '{item[1]}' "
+                       f"AND pattern is {item[2]} AND material is {item[3]} AND occasion ='{item[4]}' "
+                       f"AND weather = '{item[5]}' AND temperature = '{item[6]}'")
 
         # TODO somehow need to change None to Null when parsing through list...
 
