@@ -7,7 +7,7 @@ Currently, I am building the base of this system; the database - how each item o
 - Backend: Python
 - Database: SQL (mySQL)
 
-Planning doc: https://docs.google.com/document/d/1VSf6Rvl3bIrhMl1ZeDYNR1irCiNFXp9loG5NWChMq2A/edit?usp=sharing     [LAST UPDATED: 2024-09-09 9:46 AM]
+Planning doc: https://docs.google.com/document/d/1VSf6Rvl3bIrhMl1ZeDYNR1irCiNFXp9loG5NWChMq2A/edit?usp=sharing     [LAST UPDATED: 2024-09-29 6:39 AM]
 
 ## To-Do
 - Class for each subtype
