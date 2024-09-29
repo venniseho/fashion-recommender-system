@@ -158,3 +158,9 @@ class Outerwear(Clothing):
         self.subtype = subtype
         self.length = length
         self.season = season
+
+if name == "__main__":
+    item = ['corset/bustier', 'white', None, None, 'casual,party', 'sunny', 20]
+    item2 = ['turtleneck,bodysuit,long sleeve', 'white', None, None, 'casual', 'snowy,rainy', 15]
+
+    #TODO add tests

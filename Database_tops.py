@@ -47,7 +47,7 @@ conn = mysql.connector.connect(
 # Create a cursor object
 cursor = conn.cursor()
 
-# cursor.execute('''DROP TABLE IF EXISTS Tops''')
+cursor.execute('''DROP TABLE IF EXISTS Tops''')
 
 # Execute an SQL command (for example, create a table)
 cursor.execute('''CREATE TABLE IF NOT EXISTS Tops (
@@ -89,34 +89,30 @@ items = [item, item2, item]
 # Check if item in table. If no, add. else, don't add.
 # use 'is NULL' instead of None
 
-for item in items:
-    cursor.execute(f"SELECT * FROM Tops WHERE subtype = '{item[0]}' AND colours = '{item[1]}' AND pattern is NULL "
-                   f"AND material is NULL AND occasion ='{item[4]}' AND weather = '{item[5]}' "
-                   f"AND temperature = '{item[6]}'")
+# for item in items:
+for i in range(len(item)):
+    if item[i] is None:
+        item[i] = "NULL"
 
-    row = cursor.fetchall()
-    if not row:
-        cursor.execute("INSERT INTO Tops (subtype, colours, pattern, material, occasion, weather, temperature)"
-                       "VALUES (%s, %s, %s, %s, %s, %s, %s)", item)
+# Create a cursor object
+print(f"SELECT * FROM Tops WHERE subtype = '{item[0]}' AND colours = '{item[1]}' "
+               f"AND pattern is {item[2]} AND material is {item[3]} AND occasion ='{item[4]}' "
+               f"AND weather = '{item[5]}' AND temperature = '{item[6]}'")
 
+cursor.execute(f"SELECT * FROM Tops WHERE subtype = '{item[0]}' AND colours = '{item[1]}' "
+               f"AND pattern is {item[2]} AND material is {item[3]} AND occasion ='{item[4]}' "
+               f"AND weather = '{item[5]}' AND temperature = '{item[6]}'")
 
-# Commit the transaction
-conn.commit()
+# TODO somehow need to change None to Null when parsing through list...
 
-# Query the database
-cursor.execute("SELECT * FROM Tops")
+row = cursor.fetchall()
+if not row:
+    cursor.execute("INSERT INTO Tops (subtype, colours, pattern, material, occasion, weather, temperature)"
+                   "VALUES (%s, %s, %s, %s, %s, %s, %s)", item)
+
 rows = cursor.fetchall()
-
-# Print the result
 for row in rows:
     print(row)
-
-# cursor.execute("SELECT * FROM Tops WHERE subtype = 'corset/bustier' AND colours = 'black'")
-# rows = cursor.fetchall()
-#
-# print(type(rows))
-# for row in rows:
-#     print(row)
 
 # Close the cursor and connection
 cursor.close()
