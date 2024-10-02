@@ -110,6 +110,9 @@ cursor.execute(f"SELECT * FROM Tops WHERE subtype = '{item[0]}' AND colours = '{
 
 row = cursor.fetchall()
 if not row:
+    print(item)
+    print("INSERT INTO Tops (subtype, colours, pattern, material, occasion, weather, temperature)"
+                   "VALUES (%s, %s, %s, %s, %s, %s, %s)", item)
     cursor.execute("INSERT INTO Tops (subtype, colours, pattern, material, occasion, weather, temperature)"
                    "VALUES (%s, %s, %s, %s, %s, %s, %s)", item)
 
