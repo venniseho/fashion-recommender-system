@@ -90,9 +90,12 @@ items = [item, item2, item]
 # use 'is NULL' instead of None
 
 # for item in items:
-for i in range(len(item)):
-    if item[i] is None:
-        item[i] = "NULL"
+for item in items:
+    for i in range(len(item)):
+        if item[i] is None:
+            item[i] = "NULL"
+
+print(items)
 
 # Create a cursor object
 print(f"SELECT * FROM Tops WHERE subtype = '{item[0]}' AND colours = '{item[1]}' "
